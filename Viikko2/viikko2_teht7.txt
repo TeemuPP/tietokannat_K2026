@@ -1,0 +1,31 @@
+a) mysql> SELECT * from employees
+    -> order by last_name asc
+    -> limit 10;
+
+b) mysql> SELECT * from employees
+    -> order by last_name, first_name asc
+    -> limit 10;
+
+c) mysql> SELECT * from employees
+    -> order by hire_date desc
+    -> limit 5;
+
+d) mysql> SELECT first_name,last_name,salary FROM employees JOIN salaries USING(emp_no) order by salary DESC LIMIT 1;
+
+
+e) mysql> SELECT first_name,last_name,salary FROM employees JOIN salaries USING(emp_no) order by salary LIMIT 1;
+
+
+f) SELECT first_name,last_name,salary FROM employees JOIN salaries USING(emp_no) WHERE salary>150000;
+
+
+g) SELECT dept_name, COUNT(*) AS Lukumaara
+    -> FROM departments
+    -> JOIN dept_emp ON departments.dept_no = dept_emp.dept_no
+    -> JOIN employees ON employees.emp_no = dept_emp.emp_no
+    -> WHERE dept_name IN ('Marketing', 'Sales');
+	
+h) SELECT first_name, last_name, dept_name FROM dept_manager JOIN employees USING(emp_no) JOIN departments USING(dept_no);
+
+i) SELECT dept_name, AVG(salary) as Keskipalkka FROM departments JOIN dept_emp USING(dept_no) JOIN salaries USING(emp_no) 
+	-> WHERE dept_name IN ('Sales', 'Marketing');

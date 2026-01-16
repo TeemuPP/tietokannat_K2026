@@ -1,0 +1,9 @@
+a) SELECT name FROM language ORDER BY name ASC;
+
+b) SELECT first_name, last_name, title FROM actor JOIN film_actor USING(actor_id) JOIN film USING(film_id) WHERE last_name='Temple';
+
+c) SELECT first_name, last_name, title FROM actor JOIN film_actor USING(actor_id) JOIN film USING(film_id) WHERE title='Ghost Groundhog';
+
+d) SELECT count(*) AS Lukumaara FROM film JOIN film_category USING(film_id) JOIN category USING(category_id) WHERE name='Horror';
+
+e) SELECT title from film JOIN film_category USING(film_id) JOIN category USING(category_id) WHERE name='Horror';

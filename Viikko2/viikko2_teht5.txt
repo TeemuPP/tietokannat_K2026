@@ -1,0 +1,20 @@
+a) mysql> SELECT dept_name FROM departments;
+
+
+b) mysql> SELECT distinct title from titles;
+
+
+c) mysql> SELECT MIN(salary), MAX(salary) from salaries;
+
+
+d) mysql> SELECT AVG(salary) from salaries;
+
+
+e) mysql> SELECT * from employees WHERE last_name='Facello';
+
+
+f) mysql> SELECT count(*) from employees
+    -> Where birth_date>='1950-01-01'
+    -> AND birth_date<'1960-01-01';
+
+e) mysql> SELECT gender,count(*) from employees GROUP BY gender;
