@@ -1,0 +1,38 @@
+
+1) mysql> select etunimi,sukunimi,arvosana,nimi from Arviointi JOIN Opiskelija on Opiskelija.idOpiskelija = Arviointi.idOpiskelija JOIN Opintojakso on Opintojakso.idOpintojakso = Arviointi.idOpintojakso WHERE arvosana=0;
++---------+----------+----------+---------------------------+
+| etunimi | sukunimi | arvosana | nimi                      |
++---------+----------+----------+---------------------------+
+| Hessu   | Hopo     |        0 | Fysiikka ja elektroniikka |
++---------+----------+----------+---------------------------+
+
+2) mysql> select etunimi,sukunimi,arvosana,nimi from Arviointi JOIN Opiskelija on Opiskelija.idOpiskelija = Arviointi.idOpiskelija JOIN Opintojakso on Opintojakso.idOpintojakso = Arviointi.idOpintojakso WHERE arvosana>0 AND nimi='Fysiikka ja elektroniikka';
++---------+----------+----------+---------------------------+
+| etunimi | sukunimi | arvosana | nimi                      |
++---------+----------+----------+---------------------------+
+| Roope   | Ankka    |        5 | Fysiikka ja elektroniikka |
++---------+----------+----------+---------------------------+
+
+3) mysql> SELECT etunimi, sukunimi, nimi FROM opiskelija JOIN arviointi USING(idOpiskelija) JOIN opintojakso USING(idOpintojakso) WHERE Etunimi='Hessu';
++---------+----------+---------------------------+
+| etunimi | sukunimi | nimi                      |
++---------+----------+---------------------------+
+| Hessu   | Hopo     | Matematiikka 1            |
+| Hessu   | Hopo     | Fysiikka ja elektroniikka |
++---------+----------+---------------------------+
+
+4) SELECT etunimi, sukunimi, AVG(arvosana) from opiskelija JOIN arviointi USING(idOpiskelija) WHERE etunimi='Aku';
++---------+----------+---------------+
+| etunimi | sukunimi | AVG(arvosana) |
++---------+----------+---------------+
+| Aku     | Ankka    |        4.5000 |
++---------+----------+---------------+
+
+5) mysql>  SELECT koodi, nimi, laajuus FROM opintojakso LEFT JOIN arviointi using (idOpintojakso) WHERE idOpiskelija IS NULL;
++---------+------------------+---------+
+| koodi   | nimi             | laajuus |
++---------+------------------+---------+
+| in00223 | Olio-ohjelmointi |       5 |
+| T20045  | Kellarihumppa    |       5 |
+| T20048  | VHDL-kieli       |       3 |
++---------+------------------+---------+

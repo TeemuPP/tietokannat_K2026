@@ -1,0 +1,43 @@
+
+mysql> select * from opintojakso;
++---------------+---------+---------+---------------------------+
+| idOpintojakso | Koodi   | Laajuus | Nimi                      |
++---------------+---------+---------+---------------------------+
+|             1 | in00222 |       5 | Tietokannat ja rajapinnat |
+|             2 | in00223 |       5 | Olio-ohjelmointi          |
+|             3 | in00224 |       5 | Matematiikka 1            |
+|             4 | in00225 |       5 | Fysiikka ja elektroniikka |
+|             5 | T20042  |       3 | Liike-elaman tapatietous  |
+|             6 | T20045  |       5 | Kellarihumppa             |
+|             7 | T20047  |       3 | Ruotsin kieli             |
+|             8 | T20048  |       3 | VHDL-kieli                |
++---------------+---------+---------+---------------------------+
+
+mysql> select * from opiskelija;
++--------------+---------+----------+--------------------+--------------+
+| idOpiskelija | Etunimi | Sukunimi | Osoite             | Luokkatunnus |
++--------------+---------+----------+--------------------+--------------+
+|            1 | Aku     | Ankka    | Paratiisitie 13    | TVT25SPL     |
+|            2 | Roope   | Ankka    | Rahasailio         | TVT25SPL     |
+|            3 | Mikki   | Hiiri    | Ankkalinnankatu 1  | TVT25SPO     |
+|            4 | Iines   | Ankka    | Ankkalinnankatu 67 | TVT25SPO     |
+|            5 | Hessu   | Hopo     | Ankkalinnankatu 69 | TVT25SPO     |
++--------------+---------+----------+--------------------+--------------+
+
+mysql> select etunimi,sukunimi,arvosana,päiväys,nimi from Arviointi JOIN Opiskelija on Opiskelija.idOpiskelija = Arviointi.idOpiskelija JOIN Opintojakso on Opintojakso.idOpintojakso = Arviointi.idOpintojakso;
++---------+----------+----------+------------+---------------------------+
+| etunimi | sukunimi | arvosana | päiväys    | nimi                      |
++---------+----------+----------+------------+---------------------------+
+| Mikki   | Hiiri    |        5 | 2026-01-22 | Tietokannat ja rajapinnat |
+| Roope   | Ankka    |        5 | 2026-01-22 | Fysiikka ja elektroniikka |
+| Iines   | Ankka    |        5 | 2026-01-23 | Tietokannat ja rajapinnat |
+| Iines   | Ankka    |        5 | 2026-01-23 | Ruotsin kieli             |
+| Mikki   | Hiiri    |        2 | 2026-01-23 | Ruotsin kieli             |
+| Mikki   | Hiiri    |        3 | 2026-01-23 | Matematiikka 1            |
+| Aku     | Ankka    |        4 | 2026-01-23 | Matematiikka 1            |
+| Aku     | Ankka    |        5 | 2026-01-23 | Ruotsin kieli             |
+| Hessu   | Hopo     |        1 | 2026-01-23 | Matematiikka 1            |
+| Roope   | Ankka    |        3 | 2026-01-23 | Tietokannat ja rajapinnat |
+| Roope   | Ankka    |        5 | 2026-01-23 | Liike-elaman tapatietous  |
+| Hessu   | Hopo     |        0 | 2026-01-23 | Fysiikka ja elektroniikka |
++---------+----------+----------+------------+---------------------------+
